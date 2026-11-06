@@ -81,11 +81,49 @@ const getAuthorBooks = asyncHandler(async (req, res) => {
   res.status(200).json(books);
 });
 
+// @desc    Get statistics for a specific author
+// @route   GET /authors/:id/stats
+const getAuthorStats = asyncHandler(async (req, res) => {
+  const author = await Author.findById(req.params.id);
+
+  if (!author) {
+    res.status(404);
+    throw new Error('Author not found');
+  }
+
+  // Find all books by this author, sorted by price (cheapest to most expensive)
+  const books = await Book.find({ author: req.params.id }).sort({ price: 1 });
+
+  // Edge case: Author has no books
+  if (books.length === 0) {
+    return res.status(200).json({
+      author: author.name,
+      bookCount: 0,
+      averagePrice: 0,
+      cheapestBook: null,
+      mostExpensiveBook: null
+    });
+  }
+
+  // Calculate statistics
+  const totalPrice = books.reduce((sum, book) => sum + book.price, 0);
+  const averagePrice = totalPrice / books.length;
+
+  res.status(200).json({
+    author: author.name,
+    bookCount: books.length,
+    averagePrice: Number(averagePrice.toFixed(2)), 
+    cheapestBook: books[0].title, 
+    mostExpensiveBook: books[books.length - 1].title 
+  });
+});
+
 module.exports = {
   createAuthor,
   getAuthors,
   getAuthorById,
   updateAuthor,
   deleteAuthor,
-  getAuthorBooks
+  getAuthorBooks,
+  getAuthorStats
 };

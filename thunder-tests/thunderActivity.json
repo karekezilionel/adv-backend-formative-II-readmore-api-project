@@ -58,15 +58,15 @@
         "method": "POST",
         "sortNum": 0,
         "created": "2026-11-06T15:48:45.043Z",
-        "modified": "2026-11-06T15:49:07.502Z",
+        "modified": "2026-11-06T17:08:27.950Z",
         "headers": [],
         "body": {
             "type": "json",
             "raw": [
                 "{\r",
-                "  \"name\": \"Chinua Achebe\",\r",
+                "  \"name\": \"Chimamanda Ngozi Adichie\",\r",
                 "  \"country\": \"Nigeria\",\r",
-                "  \"bio\": \"Novelist, poet, and critic.\"\r",
+                "  \"bio\": \"Writer of novels and short stories.\"\r",
                 "}"
             ],
             "form": []
@@ -154,6 +154,100 @@
                 "  \"price\": 15.00,\r",
                 "  \"publishedYear\": 3000,\r",
                 "  \"author\": \"6aedf6f3477a4bfcb759fd96\"\r",
+                "}"
+            ],
+            "form": []
+        }
+    },
+    {
+        "_id": "80723eb5-080b-46c8-8516-43ec8a1b83bf",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://localhost:3000/authors/6aedf6f3477a4bfcb759fd96/stats",
+        "url": "http://localhost:3000/authors/6aedf6f3477a4bfcb759fd96/stats",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2026-11-06T17:06:51.727Z",
+        "modified": "2026-11-06T17:06:51.727Z",
+        "headers": [],
+        "body": {
+            "type": "json",
+            "raw": [
+                "{\r",
+                "  \"author\": \"Chinua Achebe\",\r",
+                "  \"bookCount\": 1,\r",
+                "  \"averagePrice\": 15.99,\r",
+                "  \"cheapestBook\": \"Things Fall Apart\",\r",
+                "  \"mostExpensiveBook\": \"Things Fall Apart\"\r",
+                "}"
+            ],
+            "form": []
+        }
+    },
+    {
+        "_id": "ca8a5751-1222-4ec2-85c5-1b039f80fdd1",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://localhost:3000/authors/PASTE_HER_NEW_ID_HERE/stats",
+        "url": "http://localhost:3000/authors/PASTE_HER_NEW_ID_HERE/stats",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2026-11-06T17:07:47.804Z",
+        "modified": "2026-11-06T17:07:47.804Z",
+        "headers": [],
+        "body": {
+            "type": "json",
+            "raw": [
+                "{\r",
+                "  \"name\": \"Chimamanda Ngozi Adichie\",\r",
+                "  \"country\": \"Nigeria\",\r",
+                "  \"bio\": \"Writer of novels and short stories.\"\r",
+                "}"
+            ],
+            "form": []
+        }
+    },
+    {
+        "_id": "ca8a6cb0-eaff-4c1f-984e-bb98f9804c93",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://localhost:3000/authors/6aee098c8e5e6809a90d63d2/stats",
+        "url": "http://localhost:3000/authors/6aee098c8e5e6809a90d63d2/stats",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2026-11-06T17:08:54.224Z",
+        "modified": "2026-11-06T17:08:54.224Z",
+        "headers": [],
+        "body": {
+            "type": "json",
+            "raw": [
+                "{\r",
+                "  \"name\": \"Chimamanda Ngozi Adichie\",\r",
+                "  \"country\": \"Nigeria\",\r",
+                "  \"bio\": \"Writer of novels and short stories.\"\r",
+                "}"
+            ],
+            "form": []
+        }
+    },
+    {
+        "_id": "f04cff0b-beec-4aab-a8b3-8a99d612aa7b",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://localhost:3000/books/123",
+        "url": "http://localhost:3000/books/123",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2026-11-06T17:10:46.634Z",
+        "modified": "2026-11-06T17:10:46.634Z",
+        "headers": [],
+        "body": {
+            "type": "json",
+            "raw": [
+                "{\r",
+                "  \"name\": \"Chimamanda Ngozi Adichie\",\r",
+                "  \"country\": \"Nigeria\",\r",
+                "  \"bio\": \"Writer of novels and short stories.\"\r",
                 "}"
             ],
             "form": []

@@ -11,13 +11,31 @@ app.get('/', (req, res) => {
   res.json({ message: 'ReadMore API is running' });
 });
 
-// ADD THESE TWO LINES HERE
 const authorRoutes = require('./routes/authorRoutes');
 const bookRoutes = require('./routes/bookRoutes');
 
-// AND ADD THESE TWO LINES HERE
 app.use('/authors', authorRoutes);
 app.use('/books', bookRoutes);
+
+// --- GLOBAL ERROR HANDLER ---
+app.use((err, req, res, next) => {
+  // Handle malformed MongoDB ObjectIds (e.g., /books/123)
+  if (err.name === 'CastError' && err.kind === 'ObjectId') {
+    return res.status(404).json({ error: 'Resource not found (invalid ID format)' });
+  }
+
+  // Handle Mongoose validation errors
+  if (err.name === 'ValidationError') {
+    return res.status(400).json({ error: err.message });
+  }
+
+  // Default fallback
+  const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
+  res.status(statusCode).json({
+    error: err.message || 'Internal Server Error',
+    stack: process.env.NODE_ENV === 'production' ? null : err.stack
+  });
+});
 
 const PORT = process.env.PORT || 3000;
 const MONGO_URI = process.env.MONGO_URI;
