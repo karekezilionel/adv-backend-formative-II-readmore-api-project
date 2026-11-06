@@ -1,20 +1,24 @@
 require('dns').setServers(['8.8.8.8', '8.8.4.4']);
 require('node:dns').setDefaultResultOrder('ipv4first');
-require('dotenv').config(); // Load .env variables FIRST
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 
 const app = express();
-
-// Middleware to parse incoming JSON bodies
 app.use(express.json());
 
-// Part 0: Health-check route
 app.get('/', (req, res) => {
   res.json({ message: 'ReadMore API is running' });
 });
 
-// Connect to MongoDB, THEN start the server
+// ADD THESE TWO LINES HERE
+const authorRoutes = require('./routes/authorRoutes');
+const bookRoutes = require('./routes/bookRoutes');
+
+// AND ADD THESE TWO LINES HERE
+app.use('/authors', authorRoutes);
+app.use('/books', bookRoutes);
+
 const PORT = process.env.PORT || 3000;
 const MONGO_URI = process.env.MONGO_URI;
 
@@ -28,7 +32,7 @@ async function startServer() {
     });
   } catch (error) {
     console.error('MongoDB connection failed:', error.message);
-    process.exit(1); // Stop the app if the DB fails
+    process.exit(1);
   }
 }
 

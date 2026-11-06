@@ -1,0 +1,75 @@
+[
+    {
+        "_id": "470b7d2e-0d38-4c59-83e4-c987f0b03316",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://localhost:3000/books",
+        "url": "http://localhost:3000/books",
+        "method": "POST",
+        "sortNum": 0,
+        "created": "2026-11-06T15:40:12.957Z",
+        "modified": "2026-11-06T15:49:55.774Z",
+        "headers": [],
+        "body": {
+            "type": "json",
+            "raw": [
+                "{\r",
+                "  \"title\": \"Things Fall Apart\",\r",
+                "  \"genre\": \"Fiction\",\r",
+                "  \"price\": 15.99,\r",
+                "  \"publishedYear\": 1958,\r",
+                "  \"author\": \"6aedf6f3477a4bfcb759fd96\"\r",
+                "}"
+            ],
+            "form": []
+        }
+    },
+    {
+        "_id": "357cd2cd-fdd4-4fcf-9982-c62665c619f5",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://localhost:3000/books",
+        "url": "http://localhost:3000/books",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2026-11-06T15:47:59.473Z",
+        "modified": "2026-11-06T15:47:59.473Z",
+        "headers": [],
+        "body": {
+            "type": "json",
+            "raw": [
+                "{\r",
+                "  \"title\": \"Things Fall Apart\",\r",
+                "  \"genre\": \"Fiction\",\r",
+                "  \"price\": 15.99,\r",
+                "  \"publishedYear\": 1958,\r",
+                "  \"author\": \"PASTE_YOUR_AUTHOR_ID_HERE\"\r",
+                "}"
+            ],
+            "form": []
+        }
+    },
+    {
+        "_id": "472c09ae-ea9f-4041-9830-cc7f676c9c66",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://localhost:3000/authors",
+        "url": "http://localhost:3000/authors",
+        "method": "POST",
+        "sortNum": 0,
+        "created": "2026-11-06T15:48:45.043Z",
+        "modified": "2026-11-06T15:49:07.502Z",
+        "headers": [],
+        "body": {
+            "type": "json",
+            "raw": [
+                "{\r",
+                "  \"name\": \"Chinua Achebe\",\r",
+                "  \"country\": \"Nigeria\",\r",
+                "  \"bio\": \"Novelist, poet, and critic.\"\r",
+                "}"
+            ],
+            "form": []
+        }
+    }
+]
