@@ -5,8 +5,41 @@ const asyncHandler = require('../utils/asyncHandler');
 // @desc    Create a new book
 // @route   POST /books
 const createBook = asyncHandler(async (req, res) => {
+  const { title, price, publishedYear, author } = req.body;
+
+  // RULE 1: No orphan books. Check if the author actually exists.
+  const authorExists = await Author.findById(author);
+  if (!authorExists) {
+    return res.status(400).json({ error: 'Cannot create book: Author does not exist' });
+  }
+
+  // RULE 2: No duplicate titles per author (case-insensitive)
+  const duplicateBook = await Book.findOne({
+    author: author,
+    title: { $regex: new RegExp(`^${title}$`, 'i') } 
+  });
+
+  if (duplicateBook) {
+    return res.status(409).json({ error: 'This author already has a book with this exact title' });
+  }
+
+  // RULE 3: Validate price and publishedYear
+  const currentYear = new Date().getFullYear();
+  
+  if (price <= 0) {
+    return res.status(422).json({ error: 'Price must be greater than zero' });
+  }
+
+  if (publishedYear < 1450 || publishedYear > currentYear) {
+    return res.status(422).json({ 
+      error: `Published year must be between 1450 and ${currentYear}` 
+    });
+  }
+
+  // If all checks pass, create the book
   const book = await Book.create(req.body);
   await book.populate('author');
+  
   res.status(201).json(book);
 });
 
@@ -32,6 +65,7 @@ const getBookById = asyncHandler(async (req, res) => {
 // @desc    Update a book
 // @route   PUT /books/:id
 const updateBook = asyncHandler(async (req, res) => {
+  // We will add the same validation rules to the update function later.
   const book = await Book.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true

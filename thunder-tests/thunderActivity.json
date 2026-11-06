@@ -8,16 +8,16 @@
         "method": "POST",
         "sortNum": 0,
         "created": "2026-11-06T15:40:12.957Z",
-        "modified": "2026-11-06T15:49:55.774Z",
+        "modified": "2026-11-06T15:59:02.035Z",
         "headers": [],
         "body": {
             "type": "json",
             "raw": [
                 "{\r",
-                "  \"title\": \"Things Fall Apart\",\r",
-                "  \"genre\": \"Fiction\",\r",
-                "  \"price\": 15.99,\r",
-                "  \"publishedYear\": 1958,\r",
+                "  \"title\": \"Time Traveler\",\r",
+                "  \"genre\": \"Sci-Fi\",\r",
+                "  \"price\": 15.00,\r",
+                "  \"publishedYear\": 3000,\r",
                 "  \"author\": \"6aedf6f3477a4bfcb759fd96\"\r",
                 "}"
             ],
