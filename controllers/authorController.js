@@ -48,6 +48,15 @@ const updateAuthor = asyncHandler(async (req, res) => {
 // @desc    Delete an author
 // @route   DELETE /authors/:id
 const deleteAuthor = asyncHandler(async (req, res) => {
+  // RULE 4 (Option A): Block deletion if the author has books
+  const bookCount = await Book.countDocuments({ author: req.params.id });
+  
+  if (bookCount > 0) {
+    return res.status(409).json({ 
+      error: `Cannot delete author: ${bookCount} book(s) still reference them. Delete or reassign those books first.` 
+    });
+  }
+
   const author = await Author.findByIdAndDelete(req.params.id);
 
   if (!author) {
@@ -69,7 +78,6 @@ const getAuthorBooks = asyncHandler(async (req, res) => {
   }
 
   const books = await Book.find({ author: req.params.id });
-  
   res.status(200).json(books);
 });
 

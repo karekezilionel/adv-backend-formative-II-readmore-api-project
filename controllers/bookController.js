@@ -7,7 +7,7 @@ const asyncHandler = require('../utils/asyncHandler');
 const createBook = asyncHandler(async (req, res) => {
   const { title, price, publishedYear, author } = req.body;
 
-  // RULE 1: No orphan books. Check if the author actually exists.
+  // RULE 1: No orphan books.
   const authorExists = await Author.findById(author);
   if (!authorExists) {
     return res.status(400).json({ error: 'Cannot create book: Author does not exist' });
@@ -36,17 +36,42 @@ const createBook = asyncHandler(async (req, res) => {
     });
   }
 
-  // If all checks pass, create the book
   const book = await Book.create(req.body);
   await book.populate('author');
   
   res.status(201).json(book);
 });
 
-// @desc    Get all books
+// @desc    Get all books (with dynamic filtering and sorting)
 // @route   GET /books
 const getBooks = asyncHandler(async (req, res) => {
-  const books = await Book.find().populate('author');
+  // RULE 5: Build the query object dynamically
+  const query = {};
+
+  if (req.query.genre) query.genre = req.query.genre;
+  if (req.query.author) query.author = req.query.author;
+  
+  // Price range
+  if (req.query.minPrice || req.query.maxPrice) {
+    query.price = {};
+    if (req.query.minPrice) query.price.$gte = Number(req.query.minPrice);
+    if (req.query.maxPrice) query.price.$lte = Number(req.query.maxPrice);
+  }
+
+  // Search (case-insensitive title match)
+  if (req.query.search) {
+    query.title = { $regex: req.query.search, $options: 'i' };
+  }
+
+  // Sort
+  const sort = {};
+  if (req.query.sort) {
+    const order = req.query.order === 'desc' ? -1 : 1;
+    sort[req.query.sort] = order;
+  }
+
+  const books = await Book.find(query).sort(sort).populate('author');
+  
   res.status(200).json(books);
 });
 
@@ -65,7 +90,7 @@ const getBookById = asyncHandler(async (req, res) => {
 // @desc    Update a book
 // @route   PUT /books/:id
 const updateBook = asyncHandler(async (req, res) => {
-  // We will add the same validation rules to the update function later.
+  // We will add validation here in the final polish step if needed.
   const book = await Book.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true
