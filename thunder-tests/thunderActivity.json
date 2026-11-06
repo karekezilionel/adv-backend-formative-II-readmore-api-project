@@ -71,5 +71,92 @@
             ],
             "form": []
         }
+    },
+    {
+        "_id": "745cb9e7-a04d-464a-bb36-f9f5408824da",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://localhost:3000/authors/6aedf6f3477a4bfcb759fd9",
+        "url": "http://localhost:3000/authors/6aedf6f3477a4bfcb759fd9",
+        "method": "DELETE",
+        "sortNum": 0,
+        "created": "2026-11-06T17:01:34.336Z",
+        "modified": "2026-11-06T17:01:34.336Z",
+        "headers": [],
+        "body": {
+            "type": "json",
+            "raw": [
+                "{\r",
+                "  \"title\": \"Time Traveler\",\r",
+                "  \"genre\": \"Sci-Fi\",\r",
+                "  \"price\": 15.00,\r",
+                "  \"publishedYear\": 3000,\r",
+                "  \"author\": \"6aedf6f3477a4bfcb759fd96\"\r",
+                "}"
+            ],
+            "form": []
+        }
+    },
+    {
+        "_id": "088ee566-ec8c-4ac0-a443-67b97215d8f3",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://localhost:3000/authors/6aedf6f3477a4bfcb759fd96",
+        "url": "http://localhost:3000/authors/6aedf6f3477a4bfcb759fd96",
+        "method": "DELETE",
+        "sortNum": 0,
+        "created": "2026-11-06T17:01:46.706Z",
+        "modified": "2026-11-06T17:02:22.352Z",
+        "headers": [],
+        "body": {
+            "type": "json",
+            "raw": [
+                "{\r",
+                "  \"title\": \"Time Traveler\",\r",
+                "  \"genre\": \"Sci-Fi\",\r",
+                "  \"price\": 15.00,\r",
+                "  \"publishedYear\": 3000,\r",
+                "  \"author\": \"6aedf6f3477a4bfcb759fd96\"\r",
+                "}"
+            ],
+            "form": []
+        }
+    },
+    {
+        "_id": "eb28bda6-d7d2-4ec4-93c0-3c6c9ee64258",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://localhost:3000/books?genre=Fiction&minPrice=10",
+        "url": "http://localhost:3000/books?genre=Fiction&minPrice=10",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2026-11-06T17:02:42.877Z",
+        "modified": "2026-11-06T17:02:42.877Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "genre",
+                "value": "Fiction",
+                "isPath": false
+            },
+            {
+                "name": "minPrice",
+                "value": "10",
+                "isPath": false
+            }
+        ],
+        "body": {
+            "type": "json",
+            "raw": [
+                "{\r",
+                "  \"title\": \"Time Traveler\",\r",
+                "  \"genre\": \"Sci-Fi\",\r",
+                "  \"price\": 15.00,\r",
+                "  \"publishedYear\": 3000,\r",
+                "  \"author\": \"6aedf6f3477a4bfcb759fd96\"\r",
+                "}"
+            ],
+            "form": []
+        }
     }
 ]
