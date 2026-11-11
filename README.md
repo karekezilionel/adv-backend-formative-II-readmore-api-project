@@ -28,8 +28,6 @@ A RESTful API for a bookstore built with Express.js, MongoDB, and Mongoose. It f
 * `PUT /books/:id` - Update a book
 * `DELETE /books/:id` - Delete a book
 
-### Video link: https://youtu.be/ltlDPqC_Qwk
-
 ## Business Rules Enforced
 1. **No orphan books:** Books must belong to a real author (400).
 2. **No duplicate titles:** Per author, case-insensitive (409).
@@ -37,3 +35,6 @@ A RESTful API for a bookstore built with Express.js, MongoDB, and Mongoose. It f
 4. **Author Deletion Policy:** Block deletion if the author has books (409).
 5. **Dynamic Filtering:** GET /books supports `genre`, `minPrice`, `maxPrice`, `author`, `search`, `sort`, `order`.
 6. **Stats:** Endpoint handles authors with zero books gracefully.
+
+
+### Video link: https://youtu.be/ltlDPqC_Qwk
